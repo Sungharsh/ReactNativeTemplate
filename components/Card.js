@@ -17,34 +17,6 @@ export const Card = (props) => (
   </Container>
 );
 
-const Content = styled.View`
-  padding-left: 20px;
-  flex-direction: row;
-  align-items: center;
-  height: 80px;
-`;
-
-const Wrapper = styled.View`
-  margin-left: 10px;
-`;
-
-const Logo = styled.Image`
-  width: 44px;
-  height: 44px;
-`;
-const Caption = styled.Text`
-  color: #3c4560;
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 4px;
-`;
-const Subtitle = styled.Text`
-  color: #b8bece;
-  font-weight: 600;
-  font-size: 15px;
-  text-transform: uppercase;
-`;
-
 const Container = styled.View`
   width: 315px;
   height: 280px;
@@ -58,14 +30,6 @@ const Container = styled.View`
   border-color: #ddd;
   border-bottom-width: 0;
   elevation: 4;
-`;
-const Title = styled.Text`
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 170px;
 `;
 const Cover = styled.View`
   width: 100%;
@@ -81,4 +45,42 @@ const Image = styled.Image`
   position: absolute;
   top: 0;
   left: 0;
+`;
+
+const Title = styled.Text`
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 170px;
+`;
+
+const Content = styled.View`
+  padding-left: 20px;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+`;
+
+const Logo = styled.Image`
+  width: 44px;
+  height: 44px;
+`;
+
+const Wrapper = styled.View`
+  margin-left: 10px;
+`;
+
+const Caption = styled.Text`
+  color: #3c4560;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 4px;
+`;
+const Subtitle = styled.Text`
+  color: #b8bece;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
 `;

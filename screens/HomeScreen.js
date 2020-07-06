@@ -17,12 +17,12 @@ import { connect } from "react-redux";
 import PersonalDetails from "../components/PersonalDetails";
 
 function mapStateToProps(state) {
-  console.log("$MAPSTATE2 :", state.action);
-  return { action: state.action };
+  console.log("HomeScreenReduxState :", state);
+  return { action: state.action, name: state.name };
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log("$DISPATCH-ACTION2 :", dispatch.props);
+  console.log("HomeScreenReduxActions :", dispatch);
   return {
     openMenu: () =>
       dispatch({
@@ -35,6 +35,7 @@ class HomeScreen extends Component {
   state = {
     scale: new Animated.Value(1),
     opacity: new Animated.Value(1),
+    name: this.props.name,
   };
 
   compomentDidMount() {
@@ -57,6 +58,7 @@ class HomeScreen extends Component {
         useNativeDriver: false,
       }).start();
       StatusBar.setBarStyle("light-content", true);
+      console.log("£HOME-OPEN :", this.props);
     }
 
     if (this.props.action == "closeMenu") {
@@ -71,11 +73,12 @@ class HomeScreen extends Component {
         useNativeDriver: false,
       }).start();
       StatusBar.setBarStyle("dark-content", true);
+      console.log("£HOME-CLOSE :", this.props);
     }
   };
 
   render() {
-    console.log("$:::RENDER2:::", this.props.action);
+    console.log("HomeScreenJS-Props", this.props);
 
     return (
       <RootView>
@@ -96,7 +99,7 @@ class HomeScreen extends Component {
                   <Avatar source={require("../assets/menu.png")} />
                 </TouchableOpacity>
                 <Title>Welcome back</Title>
-                <Name>Sunny</Name>
+                <Name> {this.props.name}</Name>
                 <NotificationIcon
                   style={{ position: "absolute", right: 20, top: 5 }}
                 />
@@ -184,7 +187,7 @@ const Avatar = styled.Image`
 
 const Title = styled.Text`
   font-size: 16px;
-  color: #b8bece;
+  /* color: #b8bece; */
   font-weight: 500;
 `;
 
@@ -200,6 +203,7 @@ const Subtitle = styled.Text`
   font-size: 15px;
   margin-left: 20px;
   margin-top: 0;
+  margin-bottom: 10px;
   text-transform: uppercase;
 `;
 

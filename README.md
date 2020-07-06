@@ -2,13 +2,20 @@ Code base under production
 
 # React Native Mobile application project built with
 
-## React Native
+```
+### React Native - IOS & Android App,
+### React Native Animated,
+### Styled-components,
+### GraphQl,
+### Contentful,
+### Designs in Figma,
+### Gestures,
+### Icons,
+### Navigation
 
-## styled-components.
+```
 
-## Designs with Figma
-
-## Quick start
+### Quick start
 
 npm install
 npm start

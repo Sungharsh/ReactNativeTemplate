@@ -6,12 +6,12 @@ import { MenuItem } from "./MenuItems";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  console.log("£MAPSTATE:", state.action);
+  console.log("MenuScreenReduxState :", state);
   return { action: state.action };
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log("£DISPATCH-ACTION:", dispatch.props);
+  console.log("MenuScreenReduxActions :", dispatch.props);
   return {
     closeMenu: () =>
       dispatch({
@@ -28,11 +28,11 @@ class Menu extends Component {
 
   componentDidMount() {
     this.toggleMenu();
-    console.log("£Did-MOUNT :");
+    //console.log("£Did-MOUNT :");
   }
 
   componentDidUpdate() {
-    console.log("£Did-UPDATE :", this.props);
+    //console.log("£Did-UPDATE :", this.props);
     this.toggleMenu();
   }
 
@@ -43,18 +43,18 @@ class Menu extends Component {
         useNativeDriver: false,
       }).start();
       //console.log("£METHOD-OPEN:", this.props);
-      console.log("£METHOD-OPEN :", this.props.action);
+      console.log("£MENU-OPEN :", this.props.action);
     } else if (this.props.action == "closeMenu") {
       Animated.spring(this.state.top, {
         toValue: screenHeight,
         useNativeDriver: false,
       }).start();
-      console.log("£METHOD-CLOSE :", this.props);
+      console.log("£MENU-CLOSE :", this.props);
     }
   };
 
   render() {
-    console.log("£:::RENDER:::", this.props.action);
+    console.log("MenuScreenJS-Props", this.props);
 
     return (
       <AnimatedContainer style={{ top: this.state.top }}>
