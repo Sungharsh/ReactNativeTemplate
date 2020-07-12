@@ -1,22 +1,26 @@
-Code base under production
+# React-Native-Mobile Template
 
-# React Native Mobile application project built with
+This app is under production using React Native othere dependencies.
 
-```
-### React Native - IOS & Android App,
-### React Native Animated,
-### Styled-components,
-### GraphQl,
-### Contentful,
-### Designs in Figma,
-### Gestures,
-### Icons,
-### Navigation
+## [application built with]:
 
 ```
+##### React Native - IOS & Android App,
+##### React Native Animated,
+##### React-navigation
+##### React-redux
+##### Styled-components,
+##### GraphQl,
+##### Contentful,
+##### Designs in Figma,
+##### Icons,
+##### Navigation
+##### Esling-airbnb
 
-### Quick start
+```
 
-npm install
-npm start
-Mobile client: EXPO
+** Quick start**
+
+- npm install
+- npm start
+- Use mobile client: EXPO

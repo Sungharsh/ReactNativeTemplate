@@ -1,25 +1,23 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Animated, TouchableOpacity, Dimensions } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { MenuItem } from "./MenuItems";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Animated, TouchableOpacity, Dimensions } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { MenuItem } from './MenuItems';
+import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
-  console.log("MenuScreenReduxState :", state);
   return { action: state.action };
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log("MenuScreenReduxActions :", dispatch.props);
   return {
     closeMenu: () =>
       dispatch({
-        type: "CLOSE_MENU",
+        type: 'CLOSE_MENU',
       }),
   };
 }
-const screenHeight = Math.round(Dimensions.get("window").height);
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 class Menu extends Component {
   state = {
@@ -28,49 +26,41 @@ class Menu extends Component {
 
   componentDidMount() {
     this.toggleMenu();
-    //console.log("£Did-MOUNT :");
   }
 
   componentDidUpdate() {
-    //console.log("£Did-UPDATE :", this.props);
     this.toggleMenu();
   }
 
   toggleMenu = () => {
-    if (this.props.action == "openMenu") {
+    if (this.props.action == 'openMenu') {
       Animated.spring(this.state.top, {
         toValue: 54,
         useNativeDriver: false,
       }).start();
-      //console.log("£METHOD-OPEN:", this.props);
-      console.log("£MENU-OPEN :", this.props.action);
-    } else if (this.props.action == "closeMenu") {
+    } else if (this.props.action == 'closeMenu') {
       Animated.spring(this.state.top, {
         toValue: screenHeight,
         useNativeDriver: false,
       }).start();
-      console.log("£MENU-CLOSE :", this.props);
     }
   };
 
   render() {
-    console.log("MenuScreenJS-Props", this.props);
-
     return (
       <AnimatedContainer style={{ top: this.state.top }}>
         <Cover>
-          <Image source={require("../assets/background2.jpg")} />
+          <Image source={require('../assets/background2.jpg')} />
           <Title>Sunny</Title>
           <Subtitle>S9 Developers</Subtitle>
         </Cover>
 
         <TouchableOpacity
-          // onPress={this.toggleMenu}
           onPress={this.props.closeMenu}
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 120,
-            left: "50%",
+            left: '50%',
             marginLeft: -22,
             zIndex: 1,
           }}
@@ -128,7 +118,7 @@ const Cover = styled.View`
   align-items: center;
 `;
 const Content = styled.View`
-  height: ${screenHeight + "px"};
+  height: ${screenHeight + 'px'};
   background: #f0f3f5;
   padding: 50px;
 `;
@@ -144,23 +134,23 @@ const CloseView = styled.View`
 
 const items = [
   {
-    icon: "ios-settings",
-    title: "Account",
-    text: "settings",
+    icon: 'ios-settings',
+    title: 'Account',
+    text: 'settings',
   },
   {
-    icon: "ios-card",
-    title: "Billing",
-    text: "payments",
+    icon: 'ios-card',
+    title: 'Billing',
+    text: 'payments',
   },
   {
-    icon: "ios-compass",
-    title: "Learn React",
-    text: "start course",
+    icon: 'ios-compass',
+    title: 'Learn React',
+    text: 'start course',
   },
   {
-    icon: "ios-exit",
-    title: "Log out",
-    text: "see you soon!",
+    icon: 'ios-exit',
+    title: 'Log out',
+    text: 'see you soon!',
   },
 ];

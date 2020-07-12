@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export const Courses = (props) => (
   <Container>
@@ -22,9 +22,6 @@ const Container = styled.View`
   background: white;
   border-radius: 14px;
   margin: 10px 20px;
-  /* margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 10px; */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   border-width: 1px;
   border-color: #ddd;
@@ -64,7 +61,6 @@ const Title = styled.Text`
   width: 170px;
 `;
 const Subtitle = styled.Text`
-  /* color: #b8bece; */
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
   font-size: 15px;
@@ -75,9 +71,6 @@ const Content = styled.View`
   padding-left: 62px;
   justify-content: center;
   height: 75px;
-  /* flex-direction: row; */
-  /* align-items: center;
-  height: 80px; */
 `;
 const Avatar = styled.Image`
   width: 32px;
@@ -91,15 +84,10 @@ const Caption = styled.Text`
   color: #3c4560;
   font-size: 14px;
   font-weight: 500;
-  /* margin-top: 4px; */
 `;
 const Author = styled.Text`
   color: #3c4560;
   font-size: 13px;
   font-weight: 500;
   margin-top: 4px;
-`;
-
-const Wrapper = styled.View`
-  /* margin-left: 10px; */
 `;

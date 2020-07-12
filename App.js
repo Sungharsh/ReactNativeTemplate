@@ -1,20 +1,23 @@
-import React from "react";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import HomeScreen from "./screens/HomeScreen";
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+// import { RootStackScreen } from './navigator/RootStackScreen';
+import TabNavigatior from './navigator/TabNavigator';
 
 const initialState = {
-  action: "",
-  name: "",
+  action: '',
+  name: '',
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "OPEN_MENU":
-      return { action: "openMenu" };
-    case "CLOSE_MENU":
-      return { action: "closeMenu" };
-    case "UPDATE_NAME":
+    case 'OPEN_MENU':
+      return { action: 'openMenu' };
+    case 'CLOSE_MENU':
+      return { action: 'closeMenu' };
+    case 'UPDATE_NAME':
       return { name: action.name };
     default:
       return state;
@@ -30,7 +33,10 @@ const store = createStore(reducer);
 export default function App() {
   return (
     <Provider store={store}>
-      <HomeScreen />
+      <NavigationContainer>
+        {/* <RootStackScreen /> */}
+        <TabNavigatior />
+      </NavigationContainer>
     </Provider>
   );
 }
