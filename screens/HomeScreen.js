@@ -11,10 +11,45 @@ import styled from 'styled-components';
 import { Card } from '../components/Card';
 import { NotificationIcon } from '../components/icons';
 import { Logo } from '../components/Logo';
-import { Courses } from '../components/Courses';
+import Courses from '../components/Courses';
 import Menu from '../components/Menu';
 import { connect } from 'react-redux';
 import PersonalDetails from '../components/PersonalDetails';
+import { gql } from 'apollo-boost';
+import { Query } from 'react-apollo';
+
+const CardsQuery = gql`
+  {
+    cardsCollection {
+      items {
+        title
+        subtitle
+        caption
+        image {
+          title
+          description
+          contentType
+          fileName
+          size
+          url
+          width
+          height
+        }
+        logo {
+          title
+          description
+          contentType
+          fileName
+          size
+          url
+          width
+          height
+        }
+        content
+      }
+    }
+  }
+`;
 
 function mapStateToProps(state) {
   return { action: state.action, name: state.name };
@@ -123,7 +158,47 @@ class HomeScreen extends Component {
                 style={{ paddingBottom: 30 }}
                 showsHorizontalScrollIndicator={false}
               >
-                {cards.map((card, index) => (
+                <Query query={CardsQuery}>
+                  {({ loading, error, data }) => {
+                    if (loading) return <Message>Loading...</Message>;
+                    if (error)
+                      return (
+                        <Message>
+                          Network error... server error, status code 400, try
+                          again later.
+                        </Message>
+                      );
+
+                    {
+                    }
+
+                    return (
+                      <CardsContainer>
+                        {data.cardsCollection.items.map((card, index) => (
+                          <TouchableOpacity
+                            key={index}
+                            onPress={() =>
+                              this.props.navigation.navigate('SectionScreen', {
+                                section: card,
+                              })
+                            }
+                          >
+                            <Card
+                              title={card.title}
+                              image={card.image.url}
+                              logo={card.logo.url}
+                              caption={card.caption}
+                              subtitle={card.subtitle}
+                              content={card.content}
+                            />
+                          </TouchableOpacity>
+                        ))}
+                      </CardsContainer>
+                    );
+                  }}
+                </Query>
+                {/* FETCH DATA FROM LOCAL - instead of above query component: */}
+                {/* {cards.map((card, index) => (
                   <TouchableOpacity
                     key={index}
                     onPress={() =>
@@ -137,23 +212,27 @@ class HomeScreen extends Component {
                       image={card.image}
                       logo={card.logo}
                       caption={card.caption}
+                      subtitle={card.subtitle}
+                      content={card.content}
                     />
                   </TouchableOpacity>
-                ))}
+                ))} */}
               </ScrollView>
               <Subtitle>Popular Courses</Subtitle>
-              {courses.map((course, index) => (
-                <Courses
-                  key={index}
-                  image={course.image}
-                  logo={course.logo}
-                  subtitle={course.subtitle}
-                  title={course.title}
-                  avatar={course.avatar}
-                  caption={course.caption}
-                  author={course.author}
-                />
-              ))}
+              <CoursesContainer>
+                {courses.map((course, index) => (
+                  <Courses
+                    key={index}
+                    image={course.image}
+                    logo={course.logo}
+                    subtitle={course.subtitle}
+                    title={course.title}
+                    avatar={course.avatar}
+                    caption={course.caption}
+                    author={course.author}
+                  />
+                ))}
+              </CoursesContainer>
             </ScrollView>
           </SafeAreaView>
         </AnimatedContainer>
@@ -162,10 +241,25 @@ class HomeScreen extends Component {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-
+const CoursesContainer = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 10px;
+`;
+const CardsContainer = styled.View`
+  flex-direction: row;
+  padding-left: 3px;
+`;
+const Message = styled.Text`
+  margin: 20px;
+  color: #b8bece;
+  font-size: 15px;
+  font-weight: 500;
+`;
 const RootView = styled.View`
   background: black;
   flex: 1;
+  margin-bottom: 200px;
 `;
 const Container = styled.View`
   flex: 1;
@@ -239,6 +333,8 @@ const cards = [
     subtitle: 'React Native',
     caption: '1 of 12 sections',
     logo: require('../assets/logo-react.png'),
+    content:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English.',
   },
   {
     title: 'Styled Components',
@@ -246,6 +342,8 @@ const cards = [
     subtitle: 'React Native',
     caption: '2 of 12 sections',
     logo: require('../assets/logo-react.png'),
+    content:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English.',
   },
   {
     title: 'Props and Icons',
@@ -253,6 +351,8 @@ const cards = [
     subtitle: 'React Native',
     caption: '3 of 12 sections',
     logo: require('../assets/logo-react.png'),
+    content:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English.',
   },
   {
     title: 'Static Data and Loop',
@@ -260,6 +360,8 @@ const cards = [
     subtitle: 'React Native',
     caption: '4 of 12 sections',
     logo: require('../assets/logo-react.png'),
+    content:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using "Content here, content here", making it look like readable English.',
   },
 ];
 

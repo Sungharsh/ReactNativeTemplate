@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Ionicons } from "@expo/vector-icons";
-import Icon from "react-native-ionicons";
+import React from 'react';
+import styled from 'styled-components';
+import { Ionicons } from '@expo/vector-icons';
+import Icon from 'react-native-ionicons';
 
 export const MenuItem = (props) => (
   <Container>

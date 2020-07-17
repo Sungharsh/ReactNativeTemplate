@@ -1,17 +1,22 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { ImageBackground, PointPropType } from 'react-native';
 
 export const Card = (props) => (
-  <Container>
+  <Container style={{ elevation: 6 }}>
     <Cover>
-      <Image source={props.image} />
-      <Title>{props.title}</Title>
+      <ImageBackground
+        source={{ uri: props.image }}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <Title>{props.title}</Title>
+      </ImageBackground>
     </Cover>
     <Content>
-      <Logo source={props.logo} />
+      <Logo source={{ uri: props.logo }} />
       <Wrapper>
         <Caption>{props.caption}</Caption>
-        <Subtitle>5 to 12 sections</Subtitle>
+        <Subtitle>{props.subtitle} </Subtitle>
       </Wrapper>
     </Content>
   </Container>
@@ -29,7 +34,6 @@ const Container = styled.View`
   border-width: 1px;
   border-color: #ddd;
   border-bottom-width: 0;
-  elevation: 4;
 `;
 const Cover = styled.View`
   width: 100%;
@@ -37,14 +41,6 @@ const Cover = styled.View`
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   overflow: hidden;
-`;
-
-const Image = styled.Image`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
 const Title = styled.Text`

@@ -1,32 +1,64 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Dimensions } from 'react-native';
 
-export const Courses = (props) => (
-  <Container>
-    <Cover>
-      <Image source={props.image} />
-      <Logo source={props.logo} resizeMode="contain" />
-      <Subtitle>{props.subtitle}</Subtitle>
-      <Title>{props.title}</Title>
-    </Cover>
-    <Content>
-      <Avatar source={props.avatar} />
-      <Caption>{props.caption}</Caption>
-      <Author>Designed by: {props.author}</Author>
-    </Content>
-  </Container>
-);
+const screenWidth = Dimensions.get('window').width;
+
+function getCourseWidth(screenWidth) {
+  var cardWidth = screenWidth - 40;
+  if (screenWidth >= 768) {
+    // ipad portrait
+    cardWidth = (screenWidth - 60) / 2;
+  }
+  if (screenWidth >= 1024) {
+    // ipad landscape
+    cardWidth = (screenWidth - 80) / 3;
+  }
+  return cardWidth;
+}
+
+class Courses extends React.Component {
+  state = {
+    cardWidth: getCourseWidth(screenWidth),
+  };
+  componentDidMount() {
+    Dimensions.addEventListener('change', this.adaptLayout);
+  }
+  adaptLayout = (dimensions) => {
+    this.setState({
+      cardWidth: getCourseWidth(dimensions.window.width),
+    });
+  };
+  render() {
+    return (
+      <Container style={{ elevation: 9, width: this.state.cardWidth }}>
+        <Cover>
+          <Image source={this.props.image} />
+          <Logo source={this.props.logo} resizeMode="contain" />
+          <Subtitle>{this.props.subtitle}</Subtitle>
+          <Title>{this.props.title}</Title>
+        </Cover>
+        <Content>
+          <Avatar source={this.props.avatar} />
+          <Caption>{this.props.caption}</Caption>
+          <Author>Designed by: {this.props.author}</Author>
+        </Content>
+      </Container>
+    );
+  }
+}
+export default Courses;
+
 const Container = styled.View`
   width: 335px;
   height: 335px;
   background: white;
   border-radius: 14px;
-  margin: 10px 20px;
+  margin: 10px 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   border-width: 1px;
   border-color: #ddd;
   border-bottom-width: 0;
-  elevation: 9;
 `;
 const Cover = styled.View`
   width: 100%;

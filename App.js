@@ -3,8 +3,17 @@ import * as React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-// import { RootStackScreen } from './navigator/RootStackScreen';
 import TabNavigatior from './navigator/TabNavigator';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  uri: 'https://graphql.contentful.com/content/v1/spaces/khr85tgwpouk',
+  credentials: 'same-origin',
+  headers: {
+    authorization: `Bearer UFE824BzelALu1n3q0Ks56gt1_PSqoiPtjSXhh-Xn6U`,
+  },
+});
 
 const initialState = {
   action: '',
@@ -22,21 +31,17 @@ const reducer = (state = initialState, action) => {
     default:
       return state;
   }
-
-  // if (action.type == "CLOSE_MENU") {
-  //   return { action: "closeMenu" };
-  // }
-  // return state;
 };
 const store = createStore(reducer);
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        {/* <RootStackScreen /> */}
-        <TabNavigatior />
-      </NavigationContainer>
-    </Provider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <NavigationContainer>
+          <TabNavigatior />
+        </NavigationContainer>
+      </Provider>
+    </ApolloProvider>
   );
 }

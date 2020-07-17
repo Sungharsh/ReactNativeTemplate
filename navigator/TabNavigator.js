@@ -35,31 +35,3 @@ export default function TabNavigatior() {
     </Tab.Navigator>
   );
 }
-
-//////////////////////////////////////////////////////////////////////////////
-
-// import { createBottomTabNavigator } from 'react-navigation/bottom-tabs';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import HomeScreen from './../screens/HomeScreen';
-// import SectionScreen from './../screens/SectionScreen';
-
-// const HomeStack = createStackNavigator({
-//   Home: HomeScreen,
-//   section: SectionScreen,
-// });
-// 2;
-// const CoursesStack = createStackNavigator({
-//   Courses: SectionScreen,
-// });
-
-// const ProjectStack = createStackNavigator({
-//   Projects: SectionScreen,
-// });
-// const TabNavigator = createBottomTabNavigator({
-//   HomeStack,
-//   CoursesStack,
-//   ProjectStack,
-// });
-// export default TabNavigator;
-
-//https://reactnavigation.org/docs/tab-based-navigation

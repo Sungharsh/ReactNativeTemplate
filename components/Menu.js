@@ -5,6 +5,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { MenuItem } from './MenuItems';
 import { connect } from 'react-redux';
 
+const screenWidth = Dimensions.get('window').width;
+var cardWidth = screenWidth;
+if (screenWidth > 500) {
+  cardWidth = 500;
+}
+
 function mapStateToProps(state) {
   return { action: state.action };
 }
@@ -103,8 +109,8 @@ const Subtitle = styled.Text`
 
 const Container = styled.View`
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: ${cardWidth + 'px'};
+  align-self: center;
   z-index: 100;
   border-radius: 10px;
   overflow: hidden;
@@ -119,7 +125,7 @@ const Cover = styled.View`
 `;
 const Content = styled.View`
   height: ${screenHeight + 'px'};
-  background: #f0f3f5;
+  background: #cfe0c3;
   padding: 50px;
 `;
 const CloseView = styled.View`

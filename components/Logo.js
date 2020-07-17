@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Logo = (props) => {
   return (
-    <Container>
+    <Container style={{ elevation: 4 }}>
       <Image source={props.image} resizeMode="contain" />
       <Text>{props.text}</Text>
     </Container>
@@ -22,7 +22,6 @@ const Container = styled.View`
   border-width: 1px;
   border-color: #ddd;
   border-bottom-width: 0;
-  elevation: 4;
 `;
 const Image = styled.Image`
   width: 36px;
