@@ -12,7 +12,7 @@
 3 React-navigation
 4 React-redux
 5 Styled-components,
-6 GraphQl,
+6 GraphQl & Apollo client,
 7 Contentful,
 8 Designs in Figma,
 9 Icons,
