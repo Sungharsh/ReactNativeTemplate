@@ -1,6 +1,6 @@
 :arrow_down: # React-Native-Mobile Template:
 
-![App initial screen](https://p50.f0.n0.cdn.getcloudapp.com/items/2Nu5OZ8q/screen.PNG?v=1096e8e529c4b9d7d27fa47393ab9c28)
+![App initial screen](https://p50.f0.n0.cdn.getcloudapp.com/items/RBuqjpGw/screenImage.PNG?v=aaaa7a6efdb54c4b01eb9e397045e2c4)
 
 :information_source: This app is built with **React Native** and works on both IOS and Android platforms.
 
